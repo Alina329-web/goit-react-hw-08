@@ -11,15 +11,13 @@ export default function ContactItem({ contact }) {
   };
 
   return (
-    <div className={styles.contactContainer}>
-      <li className={styles.contactItem}>
-        <p className={styles.contactDetails}>
-          {contact.name}: {contact.phone}
-        </p>
-        <button className={styles.deleteButton} onClick={handleDelete}>
-          Delete
-        </button>
-      </li>
-    </div>
+    <li className={styles.contactItem}>
+      <p>
+        {contact.name}: {contact.number}
+      </p>
+      <button className={styles.deleteButton} onClick={handleDelete}>
+        Delete
+      </button>
+    </li>
   );
 }

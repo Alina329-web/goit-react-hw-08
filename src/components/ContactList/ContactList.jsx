@@ -10,8 +10,10 @@ export default function ContactList() {
   return (
     <ul className={styles.contactList}>
       {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.phone}
+        <li key={contact.id} className={styles.contactItem}>
+          <p>
+            {contact.name} : {contact.number}
+          </p>
           <button onClick={() => dispatch(deleteContact(contact.id))}>
             Delete
           </button>

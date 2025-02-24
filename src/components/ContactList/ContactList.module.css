@@ -4,4 +4,13 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 20px;
+  padding-inline-start: 0;
+}
+.contactItem {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  border: 3px solid rgb(154, 154, 156);
+  background-color: aquamarine;
+  border-radius: 20px;
 }

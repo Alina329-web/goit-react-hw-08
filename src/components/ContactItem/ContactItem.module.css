@@ -1,13 +1,5 @@
-.contactContainer {
-  display: flex;
-  padding: 20px;
-  border: 3px solid rgb(154, 154, 156);
-  background-color: aquamarine;
-  border-radius: 20px;
-}
-
-.contactDetails {
-  font-size: 16px;
+/* .contactDetails {
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -23,4 +15,4 @@
 
 .deleteButton:hover {
   background-color: #e53e3e;
-}
+} */
