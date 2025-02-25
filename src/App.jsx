@@ -8,6 +8,7 @@ import {
 } from './redux/contactsSlice';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
+import SearchBox from './components/SearchBox/SearchBox';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,7 +16,6 @@ export default function App() {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
-  // Виконуємо запит на отримання контактів при завантаженні компонента
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -23,6 +23,7 @@ export default function App() {
   return (
     <div className="app">
       <h1>Contact Book</h1>
+      <SearchBox />
 
       {loading && <p>Loading contacts...</p>}
       {error && <p>Error: {error}</p>}
