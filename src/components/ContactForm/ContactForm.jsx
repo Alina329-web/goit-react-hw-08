@@ -8,15 +8,15 @@ export default function ContactForm() {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const phone = form.phone.value;
-    dispatch(addContact({ name, phone }));
+    const number = form.number.value;
+    dispatch(addContact({ name, number }));
     form.reset();
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.contactsForm}>
       <input type="text" name="name" required placeholder="Name" />
-      <input type="text" name="phone" required placeholder="Phone" />
+      <input type="text" name="number" required placeholder="Phone" />
       <button type="submit" className={styles.contactsBtn}>
         Add Contact
       </button>
