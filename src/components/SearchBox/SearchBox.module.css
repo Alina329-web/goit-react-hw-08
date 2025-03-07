@@ -1,10 +1,23 @@
-.searchContainer {
-}
-.search {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 20px;
+.searchBox {
+  margin-top: 20px;
+  width: 100%;
+  background-color: aqua;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+}
+
+.input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #444;
+
+  color: black;
+  border-radius: 10px;
+}
+.label {
+  color: black;
+  font-weight: 300;
 }

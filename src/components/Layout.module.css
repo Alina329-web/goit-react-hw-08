@@ -1,0 +1,16 @@
+.container {
+  background-color: rgba(0, 255, 255, 0.466);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+}
+
+.loading {
+  font-size: 14px;
+  text-align: center;
+  color: #888;
+}

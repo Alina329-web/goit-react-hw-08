@@ -1,20 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
-import { createSelector } from 'reselect';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { addContact, deleteContact, fetchContacts } from './operations';
+import { selectNameFilter } from '../filter/slice';
+import { logout } from '../auth/operations';
+
+const initialState = {
+  items: [],
+  loading: false,
+  error: null,
+  filter: '',
+};
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    items: [],
-    filter: '',
-    loading: false,
-    error: null,
-  },
-  reducers: {
-    setFilter: (state, action) => {
-      state.filter = action.payload;
-    },
-  },
+  initialState,
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, state => {
@@ -52,25 +50,35 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(logout.fulfilled, state => {
+        state.items = [];
+        state.loading = false;
+        state.error = null;
       });
   },
 });
 
+export const { clearContacts } = contactsSlice.actions;
+
 export const selectContacts = state => state.contacts.items;
-export const selectFilter = state => state.contacts.filter;
 export const selectLoading = state => state.contacts.loading;
 export const selectError = state => state.contacts.error;
+export const selectFilter = state => state.filter;
 
 export const selectFilteredContacts = createSelector(
-  [selectContacts, selectFilter],
+  [selectContacts, selectNameFilter],
   (contacts, filter) => {
-    const lowercasedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(lowercasedFilter)
+    if (!filter) return contacts;
+
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(
+      contact =>
+        contact.name.toLowerCase().includes(normalizedFilter) ||
+        contact.number.toLowerCase().includes(normalizedFilter)
     );
   }
 );
-
-export const { setFilter } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
