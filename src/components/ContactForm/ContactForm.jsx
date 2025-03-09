@@ -2,12 +2,12 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import s from './ContactForm.module.css';
-import { selectContacts } from '../../redux/filter/selectors.js';
+import { selectAllContacts } from '../../redux/contacts/selectors.js';
 import { addContact } from '../../redux/contacts/operations.js';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectAllContacts);
 
   const initialValues = {
     name: '',

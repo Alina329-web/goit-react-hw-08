@@ -1,14 +1,9 @@
-// export const selectLoading = (state) => state.tasks.loading;
-
-// export const selectFilter = (state) => state.tasks.filter;
-
-// export const selectAllTasks = (state) => state.tasks.items;
 import { createSelector } from '@reduxjs/toolkit';
-import { selectNameFilter } from '../filter/slice';
-import { selectContacts } from '../filter/selectors';
+import { selectNameFilter } from '../filter/selectors';
 
+export const selectAllContacts = state => state.contacts.items;
 export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
+  [selectAllContacts, selectNameFilter],
   (contacts, filter) => {
     if (!filter) return contacts;
 
@@ -24,4 +19,3 @@ export const selectFilteredContacts = createSelector(
 
 export const selectLoading = state => state.contacts.loading;
 export const selectFilter = state => state.contacts.filter;
-export const selectAllContacts = state => state.contacts.items;
